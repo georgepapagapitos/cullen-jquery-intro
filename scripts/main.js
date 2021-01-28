@@ -25,17 +25,19 @@ function onReady() {
   $('#delete-button').on('click', deleteMe);
   $(document).on('click', '.delete-button', deleteMe);
 
-  function whenIAddAHarmonica() {
+  function whenIAddAHarmonica(event) {
+    event.preventDefault();
     console.log('clicked the button');
     let brand = $('#brand').val();
     console.log(brand);
     $('#harmonicas').append(
       `<li class="harmonica-item">${brand} <button class="delete-button">Delete Me</button></li>`
     );
+    $('#brand').val('');
   }
 
   function deleteMe() {
     console.log('Delete me!');
-    $('.harmonica-item').remove();
+    $(this).parent().remove();
   }
 }
