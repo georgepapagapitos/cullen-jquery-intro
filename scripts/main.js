@@ -20,4 +20,22 @@ function onReady() {
 
   const louderText = h1Text.toUpperCase() + '!!!!!';
   $('h1').text(louderText);
+
+  $('#submit-button').on('click', whenIAddAHarmonica);
+  $('#delete-button').on('click', deleteMe);
+  $(document).on('click', '.delete-button', deleteMe);
+
+  function whenIAddAHarmonica() {
+    console.log('clicked the button');
+    let brand = $('#brand').val();
+    console.log(brand);
+    $('#harmonicas').append(
+      `<li class="harmonica-item">${brand} <button class="delete-button">Delete Me</button></li>`
+    );
+  }
+
+  function deleteMe() {
+    console.log('Delete me!');
+    $('.harmonica-item').remove();
+  }
 }
